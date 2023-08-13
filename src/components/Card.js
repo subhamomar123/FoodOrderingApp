@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import {  useCart, useDispatchCart } from './ContextReducer'
+import { useDispatchCart } from './ContextReducer'
 
 export default function Card(props) {
     let options = props.options;

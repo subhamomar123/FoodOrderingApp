@@ -2,7 +2,6 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Card from '../components/Card'
-import Carousel from '../components/Carousel'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
@@ -12,7 +11,7 @@ export default function Home() {
 	const [search, setSearch] = useState('');
 
 	const loadFoodItems = async () => {
-		let response = await fetch("http://localhost:5000/api/foodData", {
+		let response = await fetch(`${process.env.BACKEND_URL}/api/foodData`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

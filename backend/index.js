@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors'); // Add this line to import the cors middleware
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 const mongoDB = require('./db');
 mongoDB();
 
