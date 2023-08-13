@@ -38,7 +38,6 @@ export default function Home() {
 						<div className=" carousel-caption  " style={{ zIndex: "2" }}>
 							<div className=" d-flex justify-content-center">  {/* justify-content-center, copy this <form> from navbar for search box */}
 								<input className="form-control me-2 w-75 bg-white text-dark" type="search" placeholder="Type in..." aria-label="Search" value={search} onChange={(e) => { setSearch(e.target.value) }}/>
-								{/* <button className="btn text-white bg-success" type="submit">Search</button> */}
 							</div>
 						</div>
 						<div className="carousel-item active" >
@@ -63,7 +62,7 @@ export default function Home() {
 
 
 			</div>
-			<div className='m-3 container'>
+			<div className='m-3 container justify-content-center'>
 				{
 					foodCat !== [] ? foodCat.map((data) => (
 						<div className='row mb-3'>

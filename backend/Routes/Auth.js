@@ -5,6 +5,7 @@ const { body, validationResult } = require('express-validator');
 var jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const jwtSecret = "HaHa";
+const axios = require('axios')
 
 router.post("/createuser", [
     body('email').isEmail(),
@@ -14,7 +15,7 @@ router.post("/createuser", [
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({ success:false, errors: errors.array() })
+        return res.status(400).json({ success: false, errors: errors.array() })
     }
 
     const salt = await bcrypt.genSalt(10)
@@ -46,8 +47,8 @@ router.post("/login", [
 
     const { email, password } = req.body;
     try {
-        let user = await User.findOne({email});
-        if(!user) {
+        let user = await User.findOne({ email });
+        if (!user) {
             return res.status(400).json({ error: "Try Logging in with correct credentials" });
         }
         const pwdCompare = await bcrypt.compare(password, user.password); // this return true false.
@@ -69,5 +70,6 @@ router.post("/login", [
         res.json({ success: false });
     }
 });
+
 
 module.exports = router;

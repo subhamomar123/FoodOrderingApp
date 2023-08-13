@@ -13,7 +13,8 @@ export default function Navbar() {
     let navigate = useNavigate();
     const [cartView, setCartView] = useState(false);
     const handleLogout = () => {
-        localStorage.removeItem('JSONtoken')
+        localStorage.removeItem('JSONtoken');
+        localStorage.removeItem('userEmail');
         navigate("/")
     }
     const data = useCart();
@@ -40,10 +41,14 @@ export default function Navbar() {
                         {(!localStorage.getItem("JSONtoken")) ?
                             <div className="d-flex">
                                 <Link className="btn bg-white text-success mx-1 " to="/login">Login</Link>
-                                <Link className="btn bg-white text-success mx-1" to="/signup">Signup</Link>
+                                <Link className="btn bg-white text-success mx-1" to="/createuser">Signup</Link>
                             </div> :
                             <div>
-                                <div className="btn bg-white text-success m-1" onClick={() => {
+                                <div className="btn bg-white text-danger" onClick={handleLogout} >Logout</div>
+                            </div>
+                        }
+                        <div>
+                        <div className="btn bg-white text-success m-1" onClick={() => {
                                     setCartView(true)
                                 }} >
                                     My Cart {" "}
@@ -51,9 +56,7 @@ export default function Navbar() {
                                     </Badge>
                                 </div>
                                 {cartView ? <Modal onClose={() => setCartView(false)}><Cart></Cart></Modal> : ""}
-                                <div className="btn bg-white text-danger" onClick={handleLogout} >Logout</div>
-                            </div>
-                        }
+                        </div>
                     </div>
                 </div>
             </nav>

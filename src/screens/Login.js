@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'
-
+import { useNavigate, Link } from 'react-router-dom';
+import EmailIcon from '@mui/icons-material/Email';
+import LockIcon from '@mui/icons-material/Lock';
+import Typography from '@mui/material/Typography';
 
 export default function Login() {
 	const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -37,22 +39,37 @@ export default function Login() {
 	};
 
 	return (
-		<div>
-			<>
-				<div className='container'>
-					<form className='w-50 m-auto mt-5 border bg-success border-success rounded' onSubmit={handleSubmit}><div className="m-3">
-						<label htmlFor="email" className="form-label">Email address</label>
-						<input type="email" className="form-control" name='email' value={credentials.email} onChange={onChange} aria-describedby="emailHelp" />
-					</div>
-						<div className="m-3">
-							<label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-							<input type="password" className="form-control" value={credentials.password} onChange={onChange} name='password' />
-						</div>
-						<button type="submit" className="m-3 btn btn-success">Submit</button>
-						<Link to="/createuser" className="m-3 mx-1 btn btn-danger">I'm a new User</Link>
-					</form>
+		<div className='container login-container d-flex justify-content-center align-items-center vh-100'>
+			<form className='w-50 m-auto border bg-light border-success rounded p-4' onSubmit={handleSubmit}>
+				<div className="mb-3">
+					<label htmlFor="email" className="form-label">Email address</label>
+					<input type="email" className="form-control" name='email' value={credentials.email} onChange={onChange} aria-describedby="emailHelp" />
 				</div>
-			</>
+				<div className="mb-3">
+					<label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+					<input type="password" className="form-control" value={credentials.password} onChange={onChange} name='password' />
+				</div>
+				<div className="d-flex justify-content-between justify-content-around mt-5">
+					<div className="d-flex align-items-center">
+						<button type="submit" className="btn btn-success">Submit</button>
+					</div>
+					<div className="d-flex justify-content-between">
+						<Link to="/createuser" className="btn btn-danger new-user">
+							<span className="ms-2">I'm a new User</span>
+						</Link>
+					</div>
+				</div>
+				<br/>
+				<div style={{ textAlign: 'center', margin: '20px', color: '#333' }}>
+    <Typography variant="h6">
+        <EmailIcon style={{ fontSize: '1.5em', verticalAlign: 'middle', marginRight: '10px', color: '#FF5733' }} />
+        Try email: subhamomar123@gmail.com
+        <br />
+        <LockIcon style={{ fontSize: '1.5em', verticalAlign: 'middle', marginRight: '10px', color: '#3366CC' }} />
+        Password: 123456789
+    </Typography>
+</div>
+			</form>
 		</div>
-	)
+	);
 }
