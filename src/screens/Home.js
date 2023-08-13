@@ -11,7 +11,7 @@ export default function Home() {
 	const [search, setSearch] = useState('');
 
 	const loadFoodItems = async () => {
-		let response = await fetch(`${process.env.BACKEND_URL}/api/foodData`, {
+		let response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/foodData`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
